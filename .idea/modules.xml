@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/http-request.iml" filepath="$PROJECT_DIR$/http-request.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httprequest/httprequest.iml" filepath="$PROJECT_DIR$/httprequest/httprequest.iml" />
       <module fileurl="file://$PROJECT_DIR$/httprequest/httprequest.iml" filepath="$PROJECT_DIR$/httprequest/httprequest.iml" />
       <module fileurl="file://$PROJECT_DIR$/httprequestdemo.iml" filepath="$PROJECT_DIR$/httprequestdemo.iml" />
     </modules>

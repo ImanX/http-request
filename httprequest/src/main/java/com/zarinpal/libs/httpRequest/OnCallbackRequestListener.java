@@ -8,16 +8,16 @@ import org.json.JSONObject;
  */
 
 public abstract class OnCallbackRequestListener {
-    abstract void onSuccessResponse(JSONObject jsonObject, String content);
+    public abstract void onSuccessResponse(JSONObject jsonObject, String content);
 
-    abstract void onFailureResponse(int httpCode, String dataError);
+    public abstract void onFailureResponse(int httpCode, String dataError);
 
-    void onFailureConnection() {
+    public void onFailureConnection() {
     }
 
-    void onTimeout() {
+    public void onTimeout() {
     }
 
-    void onUnknowError() {
+   public void onUnknownError() {
     }
 }
