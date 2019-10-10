@@ -1,6 +1,7 @@
 package com.zarinpal.libs.httpRequest;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -18,6 +19,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.net.ssl.SSLSocketFactory;
+
 
 /**
  * Android ZarinPal HttpRequest
@@ -34,8 +37,9 @@ public class HttpRequest implements Response.Listener, Response.ErrorListener {
     private byte                      requestType;
     private JSONObject                jsonObject;
     private OnCallbackRequestListener listener;
-    private Map<String, String> headers = new HashMap<>();
-    private Map<String, String> params  = new HashMap<>();
+    private SSLSocketFactory          setSSLSocketFactory;
+    private Map<String, String>       headers = new HashMap<>();
+    private Map<String, String>       params  = new HashMap<>();
 
 
     public static final  int    GET                       = Request.Method.GET;    /* Request Method Fields */
@@ -90,6 +94,12 @@ public class HttpRequest implements Response.Listener, Response.ErrorListener {
         return this;
     }
 
+
+    public HttpRequest setSSLSocketFactory(SSLSocketFactory sslSocketFactory) {
+        this.setSSLSocketFactory = sslSocketFactory;
+        return this;
+    }
+
     @Override
     public void onResponse(Object response) {
 
@@ -107,7 +117,6 @@ public class HttpRequest implements Response.Listener, Response.ErrorListener {
 
     @Override
     public void onErrorResponse(VolleyError error) {
-
 
         if (error instanceof NoConnectionError) {
             listener.onFailureResponse(INTERNET_CONNECTION_ERROR, DEFAULT_ERROR);
@@ -162,7 +171,7 @@ public class HttpRequest implements Response.Listener, Response.ErrorListener {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        HttpQueue.getInstance(context).addToRequest(request);
+        HttpQueue.getInstance(context, setSSLSocketFactory).addToRequest(request);
 
     }
 

@@ -4,7 +4,10 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.Volley;
+
+import javax.net.ssl.SSLSocketFactory;
 
 
 /**
@@ -16,10 +19,10 @@ public class HttpQueue {
     private static HttpQueue    instance;
     private static RequestQueue queue;
 
-    public static HttpQueue getInstance(Context context) {
+    public static HttpQueue getInstance(Context context, SSLSocketFactory sslSocketFactory) {
         if (instance == null) {
             instance = new HttpQueue();
-            queue = Volley.newRequestQueue(context);
+            queue = Volley.newRequestQueue(context, new HurlStack(null, sslSocketFactory));
         }
         return instance;
     }
