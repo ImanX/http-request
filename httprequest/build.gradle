@@ -51,7 +51,7 @@ android {
         archives generateSourcesJar
     }
 
-    version = "1.0.1"
+    version = "1.0.2"
     group = "com.zarinpal"
 
 
@@ -65,10 +65,10 @@ android {
             name = 'http-request'
 
             version {
-                name = "1.0.1"
+                name = "1.0.2"
                 desc = 'ZarinPal Http Request'
                 released = new Date()
-                vcsTag = "1.0.1"
+                vcsTag = "1.0.2"
             }
 
             licenses = ['Apache-2.0']
